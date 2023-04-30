@@ -9,9 +9,9 @@ app.use(express.json());
 app.use(cors());
 
 app.use('/books',router);
-app.get('/',(req,res)=>{
-    res.send("welcome");
-})
+// app.get('/',(req,res)=>{
+//     res.send("welcome");
+// })
 
 connection()
 .then(()=>{
