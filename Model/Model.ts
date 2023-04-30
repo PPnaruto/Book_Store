@@ -8,8 +8,7 @@ const BookSchema = new mongoose.Schema({
     author:{
         type:String,
         required:true
-    }
-    
+    }    
 })
 
 const Book = mongoose.model("Book",BookSchema);

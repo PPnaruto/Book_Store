@@ -29,7 +29,40 @@ const AddBook = async(req,res)=>{
     }
 }
 
+const UpdateBook = async(req,res)=>{
+    try{
+        const id = req.params.id;
+        const updated_data = req.body;
+        const data = await Book.findByIdAndUpdate(id,{...updated_data},{new:true});
+        res.send({
+            data:data,
+        })
+    }catch(err){
+        console.error(err.message);
+        res.status(400).send({
+            "message":"Something Went Wrong"
+        })
+    }
+}
+
+const DeleteBook = async(req,res)=>{
+    try{
+        const id = req.params.id;
+        const data = await Book.findByIdAndUpdate(id);
+        res.send({
+            data:data,
+        })
+    }catch(err){
+        console.error(err.message);
+        res.status(400).send({
+            "message":"Something Went Wrong"
+        })
+    }
+}
+
 export {
     getAllBooks,
-    AddBook
+    AddBook,
+    UpdateBook,
+    DeleteBook
 }

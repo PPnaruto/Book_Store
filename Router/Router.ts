@@ -1,13 +1,13 @@
 const express = require('express');
 const router = express.Router();
-import { getAllBooks,AddBook } from "../Controller/Controller";
+import { getAllBooks,AddBook,UpdateBook,DeleteBook } from "../Controller/Controller";
 
-router.get('/',getAllBooks);
+router.get('/allbooks',getAllBooks);
 
-router.post('/',AddBook)
+router.post('/add',AddBook)
 
-// router.patch('/:id',UpdateBook)
+router.patch('/update/:id',UpdateBook)
 
-// router.delete('/:id',DeleteBook)
+router.delete('/delete/:id',DeleteBook)
 
 export default router;

@@ -47,7 +47,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.AddBook = exports.getAllBooks = void 0;
+exports.DeleteBook = exports.UpdateBook = exports.AddBook = exports.getAllBooks = void 0;
 var Model_1 = require("../Model/Model");
 var getAllBooks = function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
     var data, err_1;
@@ -100,3 +100,56 @@ var AddBook = function (req, res) { return __awaiter(void 0, void 0, void 0, fun
     });
 }); };
 exports.AddBook = AddBook;
+var UpdateBook = function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
+    var id, updated_data, data, err_3;
+    return __generator(this, function (_a) {
+        switch (_a.label) {
+            case 0:
+                _a.trys.push([0, 2, , 3]);
+                id = req.params.id;
+                updated_data = req.body;
+                return [4 /*yield*/, Model_1.default.findByIdAndUpdate(id, __assign({}, updated_data), { new: true })];
+            case 1:
+                data = _a.sent();
+                res.send({
+                    data: data,
+                });
+                return [3 /*break*/, 3];
+            case 2:
+                err_3 = _a.sent();
+                console.error(err_3.message);
+                res.status(400).send({
+                    "message": "Something Went Wrong"
+                });
+                return [3 /*break*/, 3];
+            case 3: return [2 /*return*/];
+        }
+    });
+}); };
+exports.UpdateBook = UpdateBook;
+var DeleteBook = function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
+    var id, data, err_4;
+    return __generator(this, function (_a) {
+        switch (_a.label) {
+            case 0:
+                _a.trys.push([0, 2, , 3]);
+                id = req.params.id;
+                return [4 /*yield*/, Model_1.default.findByIdAndUpdate(id)];
+            case 1:
+                data = _a.sent();
+                res.send({
+                    data: data,
+                });
+                return [3 /*break*/, 3];
+            case 2:
+                err_4 = _a.sent();
+                console.error(err_4.message);
+                res.status(400).send({
+                    "message": "Something Went Wrong"
+                });
+                return [3 /*break*/, 3];
+            case 3: return [2 /*return*/];
+        }
+    });
+}); };
+exports.DeleteBook = DeleteBook;
